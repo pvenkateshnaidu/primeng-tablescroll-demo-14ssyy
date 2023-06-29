@@ -1,0 +1,25 @@
+<div class="card">
+    <h5>Frozen Columns</h5>
+    <p-table [value]="customers" [columns]="scrollableCols" [frozenColumns]="frozenCols"  [scrollable]="true" scrollHeight="200px" frozenWidth="100px">
+        <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+                <col *ngFor="let col of columns" style="width:300px">
+            </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                <span>{{customer|field:col}} </span>
+              
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
